@@ -48,7 +48,6 @@ public class ClockServiceImpl implements ClockService {
 
             String token = JSONObject.parseObject(Json).getJSONObject("data").getString("token");
 
-
             String str = userId + "student" + "3478cbbc33f84bd00d75d7dfa69e0daa";
 
             // 生成一个MD5加密计算摘要
