@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <springProperty scope="context" name="LOG_PATH" source="logging.path"/>
+    <springProperty scope="context" name="logger_dao_level" source="logger_dao_level"/>
+
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} [%p] [%.10t] [%c{1}][%L] %X{sbtTraceId} %m%n</pattern>
+            <charset>utf-8</charset>
+        </encoder>
+    </appender>
+
+    <appender name="main" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_PATH}/main.log</file>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} [%p] [%.10t] [%c{1}][%L] %X{sbtTraceId} %m%n</pattern>
+            <charset>utf-8</charset>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH}/main.log.%d{yyyy-MM-dd}.gz</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+    </appender>
+
+    <appender name="sql" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_PATH}/sql.log</file>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} [%p] [%.10t] [%c{1}][%L] %X{sbtTraceId} %m%n</pattern>
+            <charset>utf-8</charset>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH}/sql.log.%d{yyyy-MM-dd}.gz</fileNamePattern>
+            <maxHistory>10</maxHistory>
+        </rollingPolicy>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="console"/>
+        <appender-ref ref="main"/>
+    </root>
+
+    <!--<logger name="org.springframework" level="DEBUG" />-->
+    <!--<logger name="org.springframework.jdbc" level="DEBUG" />-->
+    <!--<logger name="org.mybatis" level="DEBUG" />-->
+
+    <!-- LoggerName.CLIENT_LOGGER_NAME -->
+    <logger name="RocketmqClient" level="WARN" />
+    <logger name="RocketmqRemoting" level="WARN" />
+
+    <!-- https://logback.qos.ch/manual/configuration.html -->
+    <logger name="com.yang.auto.mapper" level="${logger_dao_level}" additivity="false">
+        <appender-ref ref="sql"/>
+    </logger>
+
+</configuration>
