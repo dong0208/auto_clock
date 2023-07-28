@@ -1,5 +1,6 @@
 package com.yang.auto.entity;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
@@ -8,6 +9,7 @@ import java.util.Date;
 
 @Getter
 @Setter
+@ApiModel("账户信息")
 public class AutoAccount {
 
 
@@ -38,8 +40,11 @@ public class AutoAccount {
     @ApiModelProperty("账号状态，0正常，1已被禁用")
     private Integer accountStatus;
 
-    @ApiModelProperty("打卡剩余天数")
-    private Integer clockDays;
+    @ApiModelProperty("打卡剩余天数(工学云) zhiClockDays二选一或者全部")
+    private Integer gongClockDays;
+
+    @ApiModelProperty("打卡剩余天数(职校家园) zhiClockDays二选一或者全部")
+    private Integer zhiClockDays;
 
 
 

@@ -1,0 +1,3 @@
+2023-07-27 23:46:42 [DEBUG] [080-exec-8] [c.y.a.m.A.selectList][159]  ==>  Preparing: SELECT id,phone,password,type,gmt_create,gmt_modify,is_delete,create_id,account_status,clock_days FROM auto_account WHERE phone = ? 
+2023-07-27 23:46:42 [DEBUG] [080-exec-8] [c.y.a.m.A.selectList][159]  ==> Parameters: 15958100763(String)
+2023-07-27 23:46:42 [DEBUG] [080-exec-8] [c.y.a.m.A.selectList][159]  <==      Total: 0

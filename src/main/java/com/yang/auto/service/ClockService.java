@@ -9,4 +9,8 @@ public interface ClockService {
     HttpResult userRecords(UserClock userClock);
 
     HttpResult userZhiClock(UserClock userClock);
+
+    HttpResult gongxueyunVerify(String phon,String password);
+
+    HttpResult zhiClockVerify(String phone,String password1,String deviceType);
 }

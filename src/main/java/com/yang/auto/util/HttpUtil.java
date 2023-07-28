@@ -87,7 +87,7 @@ public class HttpUtil {
     public final static String zhi_content_type = "application/json;charset=utf-8";
 
 
-    public static String PostZhiRequest(URL Url, String token, String sign, String roleKey, String jsonStr,String phon){
+    public static String PostZhiRequest(URL Url, String token, String sign, String jsonStr,String phon){
         StringBuffer s = new StringBuffer();
         OutputStreamWriter out = null;
         BufferedReader in = null;

@@ -41,7 +41,7 @@ public class Swagger2Config{
                 .contact(
                         new Contact(
                                 "系统名称",
-                                "http://localhost:8080/doc.html",
+                                "http://localhost:8080/xue/doc.html",
                                 "邮箱地址(123456@163.com)"
                         )
                 )

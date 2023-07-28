@@ -5,13 +5,17 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Date;
+
 @Setter
 @Getter
-@ApiModel("用户打卡信息请求参数")
-public class UserClock {
+@ApiModel("用户打卡信息")
+public class AutoUser {
+
+    private Long id;
 
     @ApiModelProperty("是否启用该用户的打卡（true或false)")
-    private Boolean enable;
+    private boolean enable;
 
     @ApiModelProperty("手机号")
     private String phone;
@@ -31,9 +35,6 @@ public class UserClock {
     @ApiModelProperty("区/县")
     private String area;
 
-    @ApiModelProperty("android 或 ios")
-    private String type;
-
     @ApiModelProperty("详细地址，如果你打卡的时候中间带的有·这个符号你也就手动加上，这里填什么，打卡后工学云就会显示你填的内容（工学云默认·这个符号左右都会有一个空格）")
     private String address;
 
@@ -43,13 +44,35 @@ public class UserClock {
     @ApiModelProperty("打卡位置纬度,通过坐标拾取来完成(仅需精确到小数点后6位)")
     private String latitude;
 
-    @ApiModelProperty("打卡结果微信推送，微信推送使用的是pushPlus，请到官网绑定微信(传送门)，然后在发送消息里面把你的token复制出来粘贴到pushKey这项")
-    private String pushKey;
+    @ApiModelProperty("定时打卡数组格式[1,2,3,4]")
+    private String weeks;
 
-    @ApiModelProperty("打卡类型，上班-START，下班-END")
-    private String signType;
+    @ApiModelProperty("创建时间")
+    private Date gmtCreate;
 
-    @ApiModelProperty("(职家校园)设备类型,格式:手机品牌英文名称|手机代号|安卓系统版本,例如:Xiaomi|Mi 13|13")
-    private String deviceType;
+    @ApiModelProperty("更新时间")
+    private Date gmtModify;
+
+    @ApiModelProperty("0 未删除，1 已删除")
+    private Integer isDelete;
+
+    @ApiModelProperty("账户id")
+    private Long createId;
+
+    @ApiModelProperty("定时打卡上午，0-不开启，1-开启（和clockPm二选一）")
+    private Integer clockAm;
+
+    @ApiModelProperty("定时打卡下午，0-不开启，1-开启（和clockAm二选一）")
+    private Integer clockPm;
+
+    @ApiModelProperty("用户类型1，工学云，2，职校家园")
+    private Integer appType;
+
+    @ApiModelProperty("剩余打卡天数")
+    private Integer clockDays;
+
+    @ApiModelProperty("是否修改密码，编辑使用")
+    private boolean updatePassword;
+
 
 }

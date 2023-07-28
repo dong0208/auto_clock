@@ -33,7 +33,7 @@ public class LoginController {
     @Resource
     private LoginService loginService;
 
-    @ApiIgnore
+   // @ApiIgnore
     @ApiOperation("手机号+密码 登陆")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "phone", value = "手机号", required = true),
@@ -121,7 +121,7 @@ public class LoginController {
             @ApiImplicitParam(name = "id", value = "登陆人id"),
             @ApiImplicitParam(name = "password", value = "密码"),
     })
-    @PostMapping("/logincheck")
+    @PostMapping("/updatePassword")
     public HttpResult logincheck(String id,String password, HttpServletRequest request, HttpServletResponse response) {
         Assert.isTrue(id != null && password != null,"参数错误");
         return loginService.updatePassWord(id,password);
