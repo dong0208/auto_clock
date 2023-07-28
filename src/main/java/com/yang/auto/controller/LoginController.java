@@ -55,7 +55,8 @@ public class LoginController {
         xxlUser.setMobilePhone(account.getPhone());
         xxlUser.setCreateId(account.getCreateId());
         xxlUser.setType(account.getType());
-        xxlUser.setClockDays(account.getClockDays());
+        xxlUser.setGongClockDays(account.getGongClockDays());
+        xxlUser.setZhiClockDays(account.getZhiClockDays());
         xxlUser.setAccountStatus(account.getAccountStatus());
         // 2、generate sessionId + storeKey
         String sessionId = SsoSessionIdHelper.makeSessionId(xxlUser);

@@ -1,5 +1,7 @@
 package com.yang.auto.entity;
 
+import io.swagger.annotations.ApiModelProperty;
+
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Map;
@@ -20,7 +22,11 @@ public class XxlSsoUser implements Serializable {
 	private String mobilePhone;
 	private Integer accountStatus;
 	private Long createId;
-	private Integer clockDays;
+	@ApiModelProperty("打卡剩余天数(工学云) zhiClockDays二选一或者全部")
+	private Integer gongClockDays;
+
+	@ApiModelProperty("打卡剩余天数(职校家园) zhiClockDays二选一或者全部")
+	private Integer zhiClockDays;
 	private String version;
 
 	public String getVersion() {
@@ -99,11 +105,19 @@ public class XxlSsoUser implements Serializable {
 		this.createId = createId;
 	}
 
-	public Integer getClockDays() {
-		return clockDays;
+	public Integer getGongClockDays() {
+		return gongClockDays;
 	}
 
-	public void setClockDays(Integer clockDays) {
-		this.clockDays = clockDays;
+	public void setGongClockDays(Integer gongClockDays) {
+		this.gongClockDays = gongClockDays;
+	}
+
+	public Integer getZhiClockDays() {
+		return zhiClockDays;
+	}
+
+	public void setZhiClockDays(Integer zhiClockDays) {
+		this.zhiClockDays = zhiClockDays;
 	}
 }

@@ -29,6 +29,7 @@ public class LoginServiceImpl implements LoginService {
         Assert.isTrue(accountList.size() == 1, "用户存在多个，请联系管理员！");
         AutoAccount autoAccount = accountList.get(0);
         Assert.isTrue(autoAccount.getPassword().equalsIgnoreCase(EncodeUtil.base64Encoder(password)), "登陆失败，密码或账号错误！");
+        Assert.isTrue(autoAccount.getAccountStatus() != 1,"账号已被禁用");
         return autoAccount;
     }
 
