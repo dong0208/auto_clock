@@ -71,8 +71,6 @@ public class AutoUser {
     @ApiModelProperty("剩余打卡天数")
     private Integer clockDays;
 
-    @ApiModelProperty("是否修改密码，编辑使用")
-    private boolean updatePassword;
 
 
 }

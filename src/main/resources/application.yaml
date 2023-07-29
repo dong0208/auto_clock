@@ -1,9 +1,2 @@
-spring:
-  security:
-    basic:
-      path: /swagger-ui.html
-      enabled: true
-    user:
-      name: admin #账号
-      password: 123456
+
 

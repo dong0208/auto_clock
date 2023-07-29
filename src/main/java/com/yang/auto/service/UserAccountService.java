@@ -25,4 +25,6 @@ public interface UserAccountService {
     HttpResult handleClock(Long id, Long createId);
 
     void updateClockDays(AutoUser autoUser,AutoAccount autoAccount,Integer type);
+
+    HttpResult activateUserClock(Long id, Boolean enable);
 }

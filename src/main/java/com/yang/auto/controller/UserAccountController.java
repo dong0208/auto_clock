@@ -43,6 +43,8 @@ public class UserAccountController {
         return userAccountService.insertAccount(account);
     }
 
+
+
     @ApiOperation("（管理员操作）账户修改，包括密码修改/账户状态/手机号，打卡剩余天数")
     @PostMapping("/updateAccount")
     @ApiImplicitParams({
@@ -75,6 +77,7 @@ public class UserAccountController {
             @ApiImplicitParam(name = "phone", value = "手机号",required = false),
     })
     public HttpResult<IPage<AutoAccount>> selctAccountAll(Long id, Integer pageNo, Integer pageSize, String phone, HttpServletRequest request, HttpServletResponse response) {
+        log.info("selctAccountAll:id:{},pageNo:{},pageSize:{},phone:{}",id,pageNo,pageSize,phone);
         Assert.isTrue(id != null ,"管理员id必填");
         Assert.isTrue(pageNo != null ,"页码必填");
         Assert.isTrue(pageNo != null ,"条数必填");
@@ -112,7 +115,7 @@ public class UserAccountController {
         Assert.isTrue(autoUser.getLongitude() != null ,"经度必填");
         Assert.isTrue(autoUser.getLatitude() != null ,"维度必填");
         Assert.isTrue(autoUser.getAddress() != null && autoUser.getCity() != null && autoUser.getCountry() != null && autoUser.getProvince() != null
-                        && autoUser.getArea() != null && autoUser.getCreateId() != null && autoUser.getAppType() != null
+                        && autoUser.getArea() != null && autoUser.getCreateId() != null && autoUser.getAppType() != null && autoUser.getId() != null
                 ,"参数");
         return userAccountService.updateUser(autoUser);
     }
@@ -127,6 +130,7 @@ public class UserAccountController {
             @ApiImplicitParam(name = "phone", value = "手机号",required = false),
     })
     public HttpResult<IPage<AutoUser>> selctUserAll(Long id, Integer pageNo, Integer pageSize, String phone, HttpServletRequest request, HttpServletResponse response) {
+        log.info("selctUserAll:id:{},pageNo:{},pageSize:{},phone:{}",id,pageNo,pageSize,phone);
         Assert.isTrue(id != null ,"管理员id必填");
         Assert.isTrue(pageNo != null ,"页码必填");
         Assert.isTrue(pageNo != null ,"条数必填");
@@ -143,8 +147,20 @@ public class UserAccountController {
         return userAccountService.selectUserInfo(id);
     }
 
+    @ApiOperation("启动用户打卡功能")
+    @PostMapping("/activateUserClock")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "id", value = "用户id",required = true),
+            @ApiImplicitParam(name = "enable", value = "开启或关闭",required = true,type = "boolean"),
+    })
+    public HttpResult activateUserClock(Long id, Boolean enable,HttpServletRequest request, HttpServletResponse response) {
+        Assert.isTrue(id != null ,"账户id必填");
+        return userAccountService.activateUserClock(id,enable);
+    }
 
-    @ApiOperation("（用户打卡")
+
+
+    @ApiOperation("用户打卡")
     @PostMapping("/handleClock")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "id", value = "用户id",required = true),

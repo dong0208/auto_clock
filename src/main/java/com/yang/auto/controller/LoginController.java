@@ -38,7 +38,7 @@ public class LoginController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "phone", value = "手机号", required = true),
             @ApiImplicitParam(name = "password", value = "密码", required = true),
-            @ApiImplicitParam(name = "type", value = "登录类型。0-管理员，1-分级管理员", required = true),
+            @ApiImplicitParam(name = "type", value = "登录类型。0-管理员，1-分级管理员", required = false),
     })
     @PostMapping("/login")
     public HttpResult login(String phone, String password, String type, HttpServletRequest request, HttpServletResponse response) {
