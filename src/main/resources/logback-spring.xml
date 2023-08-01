@@ -48,7 +48,7 @@
     <logger name="RocketmqRemoting" level="WARN" />
 
     <!-- https://logback.qos.ch/manual/configuration.html -->
-    <logger name="com.yang.auto.mapper" level="${logger_dao_level}" additivity="false">
+    <logger name="com.yang.server.mapper" level="${logger_dao_level}" additivity="false">
         <appender-ref ref="sql"/>
     </logger>
 
